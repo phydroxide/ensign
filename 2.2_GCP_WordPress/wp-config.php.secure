@@ -39,7 +39,6 @@ define('WP_HOME', 'https://' . $_SERVER['HTTP_HOST']);
 $_SERVER['HTTPS'] = 'on';
 $_SERVER['SERVER_PORT'] = 443;
 
-
 /** Database charset to use in creating database tables. */
 define( 'DB_CHARSET', 'utf8' );
 
