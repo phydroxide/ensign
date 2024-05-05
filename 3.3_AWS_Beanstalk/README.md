@@ -48,3 +48,36 @@ pip install flask=2.0.3
 pip freeze
 pip freeze > requirements.txt
 ```
+
+## Using Dockerfile
+
+The Dockerfile automates some of this for me. 
+
+
+```
+docker build -f Docker/Dockerfile -t python:ensign . 
+```
+
+I can't use port 5000, as it seems MacOS uses that for ControlCenter AirPlay
+
+```
+sudo lsof -i -P | grep LISTEN | grep :5000
+```
+
+```
+docker run -v eb-flask:/eb-flask -p 5001:5000 -it python:ensign /bin/bash
+```
+
+```
+python3 /eb-flask/application.py
+```
+
+## Notes
+
+I upgraded to the newest version of Flask (3.0.3) because the other was failing. 
+
+## TODO
+
+Something I did broke the network plumbing between Docker on the Host and docker containers. 
+
+I just zipped up application.py and requirements.txt and pushed to my Elastic Beanstalk deployment. Port 8001 doesn't work there, so I reverted to 5000 
