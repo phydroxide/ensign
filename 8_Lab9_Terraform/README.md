@@ -103,3 +103,6 @@ I found that changes between projects required Cloud Resource Manager, troublesh
 Also, I had provided instructions that the Bastion did not need to be n1-standard-1 and could stay f1-micro, but I've changed the script in this lab to automatically do the sed that lab9 required originally.
 
 When the container is run as root, terraform builds keys as root but the bastion doesn't allow ssh as root, so now we'll run as cloudsdk
+
+All that to learn that pso-examples demo image has been iced 
+https://github.com/GoogleCloudPlatform/gke-security-scenarios-demo/issues/27
