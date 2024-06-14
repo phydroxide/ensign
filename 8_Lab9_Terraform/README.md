@@ -81,3 +81,16 @@ sed -i 's/f1-micro/n1-standard-1/g' ~/gke-security-scenarios-demo/terraform/vari
 make setup-project
 cat /app/gke-security-scenarios-demo/terraform/variables.tf
 ```
+
+## Failure Recovery
+
+When the lab fails, it fails hard, and students have to clean up the mess:
+
+1) Remove the Kubernetes cluster for the lab
+2) Remove VM instances
+3) Remove Subnet
+4) Remove VPC
+5) Remove Service Account from IAM
+
+
+Return and repeat 
