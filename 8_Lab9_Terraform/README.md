@@ -26,31 +26,28 @@ docker run -it --privileged -v /var/run/docker.sock:/var/run/docker.sock mycli /
 
 ## Use
 ```
+gcloud auth application-default login
+
 gcloud auth application-default set-quota-project your_project_name
 
-gcloud auth login
 ```
 
 A second login below is meant to be instructional in this case. Students get terraform errors requiring application-default login.
-If they try to do this in the browser's cloud CLI before their first gcloud auth-login they get an error that the quota project is not set. 
+If they try to do this in the browser's cloud CLI they may get an error that the quota project is not set. 
 
 There are tools in the lab that set config values for them, but this gets written to a personal filesystem that is shared across projects. When the project context changes, bad values get written to the filesystem.  
 
 ```
-gcloud auth application-default login
+gcloud auth login
 ```
  
 ## Labs
 I've instructed them to do sanity checks on all their values:
 
 ```
-cloud auth application-default set-quota-project your_project_name
-
-gcloud auth application-default login
+gcloud config set core/account first.last@ensign.edu
 
 gcloud auth list
-
-gcloud config set core/account first.last@ensign.edu
 
 gcloud config set core/project your_project_name
 
@@ -93,10 +90,16 @@ When the lab fails, it fails hard, and students have to clean up the mess:
 5) Remove Service Account from IAM
 6) Remove SSH keys from Compute Engine Settings Metadata
 
-
 Return and repeat 
+
+Or:
+
+Create a new, clean project and start again, being careful not to switch back and forth between projects in the Browser's CLI Console 
+
 
 # Changes
 I found that changes between projects required Cloud Resource Manager, troubleshooting bastion SSH through IAP required IAP's API to be enabled. I added them to the startup script. 
 
 Also, I had provided instructions that the Bastion did not need to be n1-standard-1 and could stay f1-micro, but I've changed the script in this lab to automatically do the sed that lab9 required originally.
+
+When the container is run as root, terraform builds keys as root but the bastion doesn't allow ssh as root, so now we'll run as cloudsdk
