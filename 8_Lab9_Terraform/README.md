@@ -81,6 +81,39 @@ cat /app/gke-security-scenarios-demo/terraform/variables.tf
 ```
 make create
 ```
+
+## The Bastion
+
+It took about 6 minutes to build from my machine on rural Internet. 
+Use gcloud cli to see the instances built:
+
+```
+gcloud instances list
+```
+
+Connect to the Bastion:
+
+```
+gcloud compute ssh gke-tutorial-bastion
+```
+
+Install the plugin
+
+```
+sudo apt-get install google-cloud-cli-gke-gcloud-auth-plugin 
+```
+
+Explore the lab
+```
+kubectl get pods --all-namespaces
+kubectl get replicasets 
+kubectl apply -f manifests/nginx.yaml
+kubectl get pods
+kubectl describe pod -l app=nginx
+kubectl apply -f manifests/apparmor-loader.yaml
+kubectl delete pods -l app=nginx
+kubectl get services
+```
 ## Failure Recovery
 
 When the lab fails, it fails hard, and students have to clean up the mess:
