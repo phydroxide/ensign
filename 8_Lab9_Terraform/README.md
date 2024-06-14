@@ -68,8 +68,7 @@ The container will already contain the copy of code for lab 9.
 cd /app/gke-security-scenarios-demo
 ```
 
-And they can then proceed to task 1. 
-The Bastion tends to respond too slow, so the lab has them patch it with sed:
+And they can then proceed to task 1. The lab has students patch the image size with sed:
 
 ```
 sed -i 's/f1-micro/n1-standard-1/g' ~/gke-security-scenarios-demo/terraform/variables.tf
@@ -79,6 +78,9 @@ make setup-project
 cat /app/gke-security-scenarios-demo/terraform/variables.tf
 ```
 
+```
+make create
+```
 ## Failure Recovery
 
 When the lab fails, it fails hard, and students have to clean up the mess:
@@ -93,8 +95,7 @@ When the lab fails, it fails hard, and students have to clean up the mess:
 Return and repeat 
 
 Or:
-
-Create a new, clean project and start again, being careful not to switch back and forth between projects in the Browser's CLI Console 
+Go to GCP's Resource Manager, Create a new, clean project and start again, being careful not to switch back and forth between projects in the Browser's CLI Console 
 
 
 # Changes
