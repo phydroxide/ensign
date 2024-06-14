@@ -10,4 +10,6 @@ RUN mv terraform /usr/local/bin
 RUN mkdir /app 
 WORKDIR /app 
 RUN git clone https://github.com/GoogleCloudPlatform/gke-security-scenarios-demo
+RUN sed -i 's/f1-micro/n1-standard-1/g' /app/gke-security-scenarios-demo/terraform/variables.tf
+COPY ./enable-apis.sh /app/gke-security-scenarios-demo/scripts/
 WORKDIR /root

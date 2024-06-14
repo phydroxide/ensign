@@ -91,6 +91,12 @@ When the lab fails, it fails hard, and students have to clean up the mess:
 3) Remove Subnet
 4) Remove VPC
 5) Remove Service Account from IAM
+6) Remove SSH keys from Compute Engine Settings Metadata
 
 
 Return and repeat 
+
+# Changes
+I found that changes between projects required Cloud Resource Manager, troubleshooting bastion SSH through IAP required IAP's API to be enabled. I added them to the startup script. 
+
+Also, I had provided instructions that the Bastion did not need to be n1-standard-1 and could stay f1-micro, but I've changed the script in this lab to automatically do the sed that lab9 required originally.
