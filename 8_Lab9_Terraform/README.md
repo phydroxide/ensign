@@ -27,9 +27,9 @@ docker run -it --privileged -v /var/run/docker.sock:/var/run/docker.sock mycli /
 ## Use
 ```
 gcloud auth application-default login
-
+```
+```
 gcloud auth application-default set-quota-project your_project_name
-
 ```
 
 A second login below is meant to be instructional in this case. Students get terraform errors requiring application-default login.
@@ -46,17 +46,23 @@ I've instructed them to do sanity checks on all their values:
 
 ```
 gcloud config set core/account first.last@ensign.edu
-
+```
+```
 gcloud auth list
-
+```
+```
 gcloud config set core/project your_project_name
-
+```
+```
 gcloud config set compute/region us-central1
-
+```
+```
 gcloud config set compute/zone us-central1-a
-
+```
+```
 gcloud config list
-
+```
+```
 cat ~/gke-security-scenarios-demo/terraform/terraform.tfvars
 ```
 
@@ -75,6 +81,8 @@ sed -i 's/f1-micro/n1-standard-1/g' ~/gke-security-scenarios-demo/terraform/vari
 ```
 ```
 make setup-project
+```
+```
 cat /app/gke-security-scenarios-demo/terraform/variables.tf
 ```
 
@@ -88,7 +96,7 @@ It took about 6 minutes to build from my machine on rural Internet.
 Use gcloud cli to see the instances built:
 
 ```
-gcloud instances list
+gcloud compute instances list
 ```
 
 Connect to the Bastion:
@@ -106,12 +114,25 @@ sudo apt-get install google-cloud-cli-gke-gcloud-auth-plugin
 Explore the lab
 ```
 kubectl get pods --all-namespaces
+```
+```
 kubectl get replicasets 
+```
+```
 kubectl apply -f manifests/nginx.yaml
+```
 kubectl get pods
+```
+```
 kubectl describe pod -l app=nginx
+```
+```
 kubectl apply -f manifests/apparmor-loader.yaml
+```
+```
 kubectl delete pods -l app=nginx
+```
+```
 kubectl get services
 ```
 ## Failure Recovery
