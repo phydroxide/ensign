@@ -121,6 +121,7 @@ kubectl get replicasets
 ```
 kubectl apply -f manifests/nginx.yaml
 ```
+```
 kubectl get pods
 ```
 ```
