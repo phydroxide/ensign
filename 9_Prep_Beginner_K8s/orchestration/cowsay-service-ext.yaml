@@ -1,0 +1,30 @@
+#     Lab questions response: 2024-06-19
+#     Remember from the gke-security-scenario demo we created a load balancer? 
+#     https://github.com/GoogleCloudPlatform/gke-security-scenarios-demo/blob/master/terraform/modules/instance/manifests/nginx.yaml#L63
+#     
+#     The current lab says vaguely to update the deployment or expose it via "NodePort"
+#     https://dev.to/ken_mwaura1/deploying-web-applications-on-kubernetes-a-beginners-guide-4ano
+#
+#     type: Loadbalancer is another type like "NodePort" I've added that modification below which serves the deployment so the page can render 
+#     If you run: kubectl apply -f cowsay-service.yaml 
+#     and then: kubectl get services
+#     You'll get output that now shows the external ip 
+#     
+#     NAME             TYPE           CLUSTER-IP       EXTERNAL-IP    PORT(S)        AGE
+#     cowsay-service   LoadBalancer   34.xxx.yyy.zzz   34.aaa.bbb.ccc 80:32081/TCP   18m
+#     
+#     Visit http://34.aaa.bbb.ccc in a web browser and you'll see a web page for docker/getting-started which was the deployment image 
+#     First, uncomment the type: Loadbalancer line at the top. Yaml is a format that requires proper indentation.
+#     so type: must line up right above "selector:" with the s in selector stacked in the same column below the  t in type 
+  apiVersion: v1
+  kind: Service
+  metadata:
+    name: cowsay-service
+  spec:
+    externalTrafficPolicy: Cluster 
+    type: LoadBalancer 
+    selector:
+      app: cowsay
+    ports:
+      - port: 80
+        targetPort: 80
