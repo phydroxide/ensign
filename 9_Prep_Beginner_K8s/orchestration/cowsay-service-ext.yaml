@@ -1,4 +1,4 @@
-#
+#     Lab questions response: 2024-06-19
 #     Remember from the gke-security-scenario demo we created a load balancer? 
 #     https://github.com/GoogleCloudPlatform/gke-security-scenarios-demo/blob/master/terraform/modules/instance/manifests/nginx.yaml#L63
 #     
