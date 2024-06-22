@@ -99,16 +99,11 @@ docker run --rm --name ensign-cli -it --privileged  -v /var/run/docker.sock:/va
 
 You're now using the same tools as me - which include:
 
-gcloud
-
-kubectl
-
-helm
-
-nano
-
-docker
-```
+* gcloud
+* kubectl
+* helm
+* nano
+* docker
 
 
 ## GCP Setup for [Jenkins Lab](https://www.cloudskillsboost.google/focuses/1776?parent=catalog)
