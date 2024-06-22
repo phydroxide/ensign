@@ -27,7 +27,6 @@ docker run -it --privileged \
 `run` is the command you're asking to perform. Other commonly used commands are `docker build`, `docker pull`, `docker container ls`, etc.
 
 `-it` gives an interactive "tty" which lets you run commands like you were on the command line.
-You could also add here `--rm` so it would remove the container when you're done, otherwise they hang around. Check it out with docker `container ls -a`.
 
 `--privileged` this lets docker run on your workstation/laptop with extra privileges, giving access for example to the docker.sock socket.
 
@@ -36,9 +35,9 @@ You could also add here `--rm` so it would remove the container when you're done
 /var/run/docker.sock on the left side of the ':' is the actual file on your filesystem
 
 /var/run/docker.sock on the right side of the ':' is where you've mounted docker's socket within the container so you can run docker within
-us-central1-docker.pkg.dev: This is GCP's artifact repository that I've enabled in my project in the us-central region
+us-central1-docker.pkg.dev: This is GCP's artifact repository that I've enabled in my project in the us-central region.
 
-You could also add here `-v Some\Local\Path\:/home/cloudsdk` so you have access to the development files in your home directory. 
+You could also add here `-v Some\Local\Path\:/root` so you have access to the development files in your home directory. 
 
 /ensign-421602/: GCP's artifact repository is multi-tenant. This is my project name so you can reach my container registry from that URL.
 
@@ -52,8 +51,34 @@ Because of the permissions I've set you do not have to run gcloud auth configure
 /bin/bash is the command that the docker container runs. This is the Bourne Again SHell for linux. 
 You could also choose '/bin/sh', or some other shell. Docker containers typically though run some service like nginx or flask.  
 
+#### Parameter Position and Misc
 
-## Pre-Built
+The /bin/bash command comes last, as it will be run within the container, immediately prior to that should be the image name. Other parameters come after "docker run" and before the image name "us-central...../ensign-cli:smaller". Or you'll get errors that will confuse you.
+
+You could also add `--rm` so it removes the container instance when you're done, otherwise they hang around. Check it out with docker `container ls -a`.
+
+The container name is usually a unique randomization of characters unless you also pass the `--name` parameter to docker. 
+
+The container name shows up inside the container shell as the hostname such as in the prompt below:
+ 
+`root@4b9fc1f0c8d2`
+
+If you want to clean these up you have to stop them, and remove them:
+
+`docker rm 4b9f` works so long as there are no other containers that begin with '4b9f'
+
+If you'd rather reuse them, you start them and reattach to them.
+
+`docker container ls -a`
+
+`docker start 4b9f` 
+
+`docker attach 4b9f` 
+
+"exit" or Ctrl+D will get you out. 
+
+
+## Runnning Pre-Built gcloud-cli tools
 
 During week 9 I built and hosted a docker image to assist students in having the same tools as I.
 
