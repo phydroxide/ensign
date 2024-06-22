@@ -23,18 +23,32 @@ docker run -it --privileged \
 
 ### Parameters explained
 `docker` is the command-line binary you're able to run by having installed Docker Desktop.
+
 `run` is the command you're asking to perform. Other commonly used commands are `docker build`, `docker pull`, `docker container ls`, etc.
+
 `-it` gives an interactive "tty" which lets you run commands like you were on the command line.
+You could also add here `--rm` so it would remove the container when you're done, otherwise they hang around. Check it out with docker `container ls -a`.
+
 `--privileged` this lets docker run on your workstation/laptop with extra privileges, giving access for example to the docker.sock socket.
+
 `-v` you're mounting a volume or file from your workstation into the container so it can access OS files, code, etc.
+
 /var/run/docker.sock on the left side of the ':' is the actual file on your filesystem
+
 /var/run/docker.sock on the right side of the ':' is where you've mounted docker's socket within the container so you can run docker within
 us-central1-docker.pkg.dev: This is GCP's artifact repository that I've enabled in my project in the us-central region
+
+You could also add here `-v Some\Local\Path\:/home/cloudsdk` so you have access to the development files in your home directory. 
+
 /ensign-421602/: GCP's artifact repository is multi-tenant. This is my project name so you can reach my container registry from that URL.
+
 /ensign-public/: This is the name I've given to my repository. I also granted the 'allUsers' principal access as Artifact Registry Reader.
 Because of the permissions I've set you do not have to run gcloud auth configure-docker to reach my container image, just run docker pull/run.
+
 /ensign-cli is the name I've given to my container. I built it with `docker build -t localname`, tagged it as ensign-cli at the url above, then pushed.
+
 :smaller is the tag I've given to this revision, indicating the work i went through to make it less bulky
+
 /bin/bash is the command that the docker container runs. This is the Bourne Again SHell for linux. 
 You could also choose '/bin/sh', or some other shell. Docker containers typically though run some service like nginx or flask.  
 
