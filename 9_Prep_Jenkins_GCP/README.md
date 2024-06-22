@@ -97,10 +97,15 @@ docker run --rm --name ensign-cli -it --privileged  -v /var/run/docker.sock:/va
 
 
 You're now using the same tools as me - which include:
+
 gcloud
+
 kubectl
+
 helm
+
 nano
+
 docker
 ```
 
