@@ -93,8 +93,9 @@ us-central1-docker.pkg.dev/ensign-421602/ensign-public/ensign-cli:smaller
 ```
 
 Run:
+```
 docker run --rm --name ensign-cli -it --privileged  -v /var/run/docker.sock:/var/run/docker.sock us-central1-docker.pkg.dev/ensign-421602/ensign-public/ensign-cli:smaller /bin/bash
-
+```
 
 You're now using the same tools as me - which include:
 
