@@ -11,29 +11,47 @@ For BYUI/Ensign Pathways IT 360 I created a docker container that could be used 
 
 [Alternate CLI Container Image](https://github.com/phydroxide/ensign/tree/main/8_Lab9_Terraform#alternate-cli) 
 
+Note the backslashes have no spaces after them, they represent that the line wraps to the next one, as if they were on the same line.
+
 ```
-docker run -it --privileged -v /Users/phydroxide/cloudsdk:/home/cloudsdk -v /var/run/docker.sock:/var/run/docker.sock mycli /bin/bash
+docker run -it --privileged \
+  -v /Users/phydroxide/cloudsdk:/home/cloudsdk \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  us-central1-docker.pkg.dev/ensign-421602/ensign-public/ensign-cli:smaller \
+  /bin/bash
 ```
+
+### Parameters explained
+`docker` is the command-line binary you're able to run by having installed Docker Desktop.
+`run` is the command you're asking to perform. Other commonly used commands are `docker build`, `docker pull`, `docker container ls`, etc.
+`-it` gives an interactive "tty" which lets you run commands like you were on the command line.
+`--privileged` this lets docker run on your workstation/laptop with extra privileges, giving access for example to the docker.sock socket.
+`-v` you're mounting a volume or file from your workstation into the container so it can access OS files, code, etc.
+/var/run/docker.sock on the left side of the ':' is the actual file on your filesystem
+/var/run/docker.sock on the right side of the ':' is where you've mounted docker's socket within the container so you can run docker within
+us-central1-docker.pkg.dev: This is GCP's artifact repository that I've enabled in my project in the us-central region
+/ensign-421602/: GCP's artifact repository is multi-tenant. This is my project name so you can reach my container registry from that URL.
+/ensign-public/: This is the name I've given to my repository. I also granted the 'allUsers' principal access as Artifact Registry Reader.
+Because of the permissions I've set you do not have to run gcloud auth configure-docker to reach my container image, just run docker pull/run.
+/ensign-cli is the name I've given to my container. I built it with `docker build -t localname`, tagged it as ensign-cli at the url above, then pushed.
+:smaller is the tag I've given to this revision, indicating the work i went through to make it less bulky
+/bin/bash is the command that the docker container runs. This is the Bourne Again SHell for linux. 
+You could also choose '/bin/sh', or some other shell. Docker containers typically though run some service like nginx or flask.  
+
 
 ## Pre-Built
 
 During week 9 I built and hosted a docker image to assist students in having the same tools as I.
 
-I've configured my artifact registry such that allAuthenticatedUsers have Artifact Registry Read access.
+I've configured my artifact registry such that allAuthenticatedUsers and allUsers have Artifact Registry Read access.
 
 ```
-Somebody brave try this for me:
-Run:
- gcloud auth login
-
-Go to the link in your browser, and complete the sign-in prompts.
-Once finished, enter the verification code provided in your browser.
-
-Run:
-gcloud auth configure-docker us-central1-docker.pkg.dev
-
-Run:
 docker pull us-central1-docker.pkg.dev/ensign-421602/ensign-public/ensign-cli:smaller
+```
+
+```
+us-central1-docker.pkg.dev/ensign-421602/ensign-public/ensign-cli:smaller
+```
 
 Run:
 docker run --rm --name ensign-cli -it --privileged  -v /var/run/docker.sock:/var/run/docker.sock us-central1-docker.pkg.dev/ensign-421602/ensign-public/ensign-cli:smaller /bin/bash
@@ -44,10 +62,11 @@ gcloud
 kubectl
 helm
 nano
+docker
 ```
 
 
-## GCP Setup
+## GCP Setup for [Jenkins Lab](https://www.cloudskillsboost.google/focuses/1776?parent=catalog)
 
 First we need to do an initial setup of the GCP Project:
 
