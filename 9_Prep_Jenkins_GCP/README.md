@@ -21,6 +21,18 @@ docker run -it --privileged \
   /bin/bash
 ```
 
+On Windows you cannot map the docker socket and therefore do not need --privileged. 
+I've rebuilt the container for windows using the cloudsdk user instead of root. 
+
+```
+docker run -it --privileged --name ensigncli \
+  -v /Users/phydroxide/PHYDROXIDE/:/home/cloudsdk \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  -p 8080:8080 \
+   us-central1-docker.pkg.dev/ensign-421602/ensign-public/ensign-cli:windows \
+  /bin/bash
+```
+
 ### Parameters explained
 `docker` is the command-line binary you're able to run by having installed Docker Desktop.
 
@@ -37,7 +49,9 @@ docker run -it --privileged \
 /var/run/docker.sock on the right side of the ':' is where you've mounted docker's socket within the container so you can run docker within
 us-central1-docker.pkg.dev: This is GCP's artifact repository that I've enabled in my project in the us-central region.
 
-You could also add here `-v Some\Local\Path\:/root` so you have access to the development files in your home directory. 
+You could also add here `-v Some\Local\Path\:/root` or `-v /c/user/path:/home/cloudsdk` so you have access to the development files in your home directory. 
+
+`-p` maps a port from your host into the docker runtime so that when you do things like kubectl port forwarding, that port comes all the way up to the workstation hosting Docker's virtual environment.
 
 /ensign-421602/: GCP's artifact repository is multi-tenant. This is my project name so you can reach my container registry from that URL.
 

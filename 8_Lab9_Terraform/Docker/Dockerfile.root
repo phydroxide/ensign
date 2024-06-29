@@ -10,7 +10,7 @@ RUN curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/s
 RUN chmod 700 get_helm.sh 
 RUN ./get_helm.sh 
 RUN ln -s /usr/bin/python3 /usr/bin/python 
-USER cloudsdk
+#USER cloudsdk
 #Running as root causes issues if you have code that generates keys based on the local user
 #Running as cloudsdk causes issues if you want to mount Docker container locally (docker run -v /var/run.docker.sock:/var/run/docker.sock
 #Windows can't mount docker socket so we do a separate build as cloudsdk
