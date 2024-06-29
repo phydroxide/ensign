@@ -1,5 +1,5 @@
 FROM gcr.io/google.com/cloudsdktool/google-cloud-cli
-RUN apt-get update -y && apt-get install vim nano unzip -y && apt clean
+RUN apt-get update -y && apt-get install vim nano unzip dnsutils netcat-traditional iputils-ping net-tools ensurepip google-cloud-cli-cloud-build-local -y && apt clean
 RUN curl https://releases.hashicorp.com/terraform/1.5.7/terraform_1.5.7_linux_amd64.zip -o tf.zip
 RUN unzip tf.zip
 RUN chmod 755 terraform
@@ -9,6 +9,7 @@ RUN chown cloudsdk:cloudsdk /app
 RUN curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
 RUN chmod 700 get_helm.sh 
 RUN ./get_helm.sh 
+RUN ln -s /usr/bin/python3 /usr/bin/python 
 USER cloudsdk
 #Running as root causes issues if you have code that generates keys based on the local user
 #Running as cloudsdk causes issues if you want to mount Docker container locally (docker run -v /var/run.docker.sock:/var/run/docker.sock
