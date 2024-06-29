@@ -1,11 +1,11 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: hello-world-deployment-1
+  name: weather 
 spec:
   selector:
     matchLabels:
-      greeting: hello
+      greeting: weather 
       version: one
   replicas: 3
   template:
