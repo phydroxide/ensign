@@ -76,6 +76,7 @@ git checkout Certificates
 cd orchestrations
 ```
 When you're done you'll have three three services pointing to my weather app and two demo apps, and an Ingress that can be configured to a Google Backend
+
 <img width="641" alt="image" src="https://github.com/phydroxide/ensign/assets/31145228/66b1d894-7584-4426-91d8-7ccf2a4fcb7f">
 
 
@@ -87,3 +88,6 @@ gcloud container clusters get-credentials autopilot-cluster-1 --zone=us-central1
 
 ## Application Load Balancer
 I also need an [External Applcation Load Balancer](https://console.cloud.google.com/welcome?walkthrough_id=load-balancing--ext-https-load-balancer-ingress&_ga=2.244656581.1162373025.1719459190-2005931062.1714184856)
+
+## References
+[More Ingress Annotations](https://github.com/kelseyhightower/ingress-with-static-ip/blob/master/README.md)
