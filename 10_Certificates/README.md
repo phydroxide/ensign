@@ -63,15 +63,23 @@ Google tends to do a stellar job with their documentation. There are samples I c
 
 Both of the references above state I need to configure a [Static IP](https://cloud.google.com/kubernetes-engine/docs/concepts/ingress-xlb#static_ip_addresses_for_https_load_balancers)
 
-
+```
+gcloud compute addresses create weather-ip --global --ip-version IPV4
+```
 
 ## Apply Orchestrations
+
+```
+git clone https://github.com/phydroxide/ensign.git
+cd ensign
+git checkout Certificates
+cd orchestrations
+```
 
 Connect to the cluster that's been patched with HttpLoadBalancing
 
 ```
 gcloud container clusters get-credentials autopilot-cluster-1 --zone=us-central1 
-
 ```
 
 ## Application Load Balancer
