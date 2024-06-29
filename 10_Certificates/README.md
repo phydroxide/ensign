@@ -73,7 +73,8 @@ gcloud compute addresses create weather-ip --global --ip-version IPV4
 git clone https://github.com/phydroxide/ensign.git
 cd ensign
 git checkout Certificates
-cd orchestrations
+cd 10_Certificates 
+cd orchestration
 ```
 When you're done you'll have three three services pointing to my weather app and two demo apps, and an Ingress that can be configured to a Google Backend
 
