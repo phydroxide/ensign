@@ -11,7 +11,7 @@ spec:
   template:
     metadata:
       labels:
-        greeting: hello
+        greeting: weather 
         version: one
     spec:
       containers:
