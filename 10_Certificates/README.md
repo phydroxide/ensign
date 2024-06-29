@@ -75,6 +75,9 @@ cd ensign
 git checkout Certificates
 cd orchestrations
 ```
+When you're done you'll have three three services pointing to my weather app and two demo apps, and an Ingress that can be configured to a Google Backend
+<img width="641" alt="image" src="https://github.com/phydroxide/ensign/assets/31145228/66b1d894-7584-4426-91d8-7ccf2a4fcb7f">
+
 
 Connect to the cluster that's been patched with HttpLoadBalancing
 
