@@ -97,6 +97,7 @@ You'll need to create a DNS record to validate the certificate challenge to prov
 ![image](https://github.com/phydroxide/ensign/assets/31145228/ac843d64-895f-4518-a26b-48423c0707a5)
 
 It will ask you to create DNS authorization
+
 ![image](https://github.com/phydroxide/ensign/assets/31145228/9e479fec-9b8f-4388-b06d-58050ac08680)
 
 
