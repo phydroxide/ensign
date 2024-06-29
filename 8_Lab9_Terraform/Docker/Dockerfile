@@ -1,5 +1,5 @@
 FROM gcr.io/google.com/cloudsdktool/google-cloud-cli
-RUN apt-get update -y && apt-get install vim nano unzip dnsutils netcat-traditional iputils-ping net-tools ensurepip google-cloud-cli-cloud-build-local -y && apt clean
+RUN apt-get update -y && apt-get install vim nano unzip dnsutils netcat-traditional iputils-ping net-tools python3-venv google-cloud-cli-cloud-build-local -y && apt clean
 RUN curl https://releases.hashicorp.com/terraform/1.5.7/terraform_1.5.7_linux_amd64.zip -o tf.zip
 RUN unzip tf.zip
 RUN chmod 755 terraform
