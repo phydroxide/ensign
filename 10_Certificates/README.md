@@ -89,6 +89,15 @@ gcloud container clusters get-credentials autopilot-cluster-1 --zone=us-central1
 ## Application Load Balancer
 I also need an [External Applcation Load Balancer](https://console.cloud.google.com/welcome?walkthrough_id=load-balancing--ext-https-load-balancer-ingress&_ga=2.244656581.1162373025.1719459190-2005931062.1714184856)
 
+Part of this process includes:
+* Creating a Front End
+* Registering the IP in DNS
+* Connecting the Backend IPs, Ports, and Path Routes
+* Creating a Certificate
+* Validating the Certificate
+
+You can try the Backends that are created by Kubernetes Services, or point to the Ingress which is what I did. 
+
 ## Certificates
 
 Load Balancers allow the creation of a certificate. You can Generate the CSR yourself, have an authority issue you a cert and import it, or let Google Manage it for you.
@@ -106,6 +115,18 @@ It will ask you to create DNS authorization
 
 You'll set up the appropriate DNS record in your project where you registered your domain
 ![image](https://github.com/phydroxide/ensign/assets/31145228/887b7367-a297-48a7-8983-22bea4b0a893)
+
+## Victory
+
+If your site allows a visit at https://my.domainname.com then it's working!
+
+![image](https://github.com/phydroxide/ensign/assets/31145228/adda334b-af5d-4427-941a-cf6e8c9c18ef)
+
+[Secure Weather](https://myweather.phydroxide.com/server)
+[Alt Path 1](https://myweather.phydroxide.com/v1)
+[Alt Path 2](https://myweather.phydroxide.com/v2)
+
+![image](https://github.com/phydroxide/ensign/assets/31145228/1c8c5bec-3cb8-4477-910a-d021cc615f31)
 
 
 ## References
