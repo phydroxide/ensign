@@ -89,5 +89,14 @@ gcloud container clusters get-credentials autopilot-cluster-1 --zone=us-central1
 ## Application Load Balancer
 I also need an [External Applcation Load Balancer](https://console.cloud.google.com/welcome?walkthrough_id=load-balancing--ext-https-load-balancer-ingress&_ga=2.244656581.1162373025.1719459190-2005931062.1714184856)
 
+## Certificates
+
+Load Balancers allow the creation of a certificate. You can Generate the CSR yourself, have an authority issue you a cert and import it, or let Google Manage it for you.
+
+You'll need to create a DNS record to validate the certificate challenge to prove you own the domain. 
+
+![image](https://github.com/phydroxide/ensign/assets/31145228/887b7367-a297-48a7-8983-22bea4b0a893)
+
+
 ## References
 [More Ingress Annotations](https://github.com/kelseyhightower/ingress-with-static-ip/blob/master/README.md)
