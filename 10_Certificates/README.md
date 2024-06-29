@@ -94,7 +94,16 @@ I also need an [External Applcation Load Balancer](https://console.cloud.google.
 Load Balancers allow the creation of a certificate. You can Generate the CSR yourself, have an authority issue you a cert and import it, or let Google Manage it for you.
 
 You'll need to create a DNS record to validate the certificate challenge to prove you own the domain. 
+![image](https://github.com/phydroxide/ensign/assets/31145228/ac843d64-895f-4518-a26b-48423c0707a5)
 
+It will ask you to create DNS authorization
+![image](https://github.com/phydroxide/ensign/assets/31145228/9e479fec-9b8f-4388-b06d-58050ac08680)
+
+
+![image](https://github.com/phydroxide/ensign/assets/31145228/3a4a8fa5-7731-4abb-9c18-0f08d49ce130)
+
+
+You'll set up the appropriate DNS record in your project where you registered your domain
 ![image](https://github.com/phydroxide/ensign/assets/31145228/887b7367-a297-48a7-8983-22bea4b0a893)
 
 
