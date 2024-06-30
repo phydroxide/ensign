@@ -16,7 +16,14 @@ spec:
     spec:
       containers:
       - name: weather 
-        image: "us-central1-docker.pkg.dev/ensign-421602/ensign-public/weather:v4"
+        image: "us-central1-docker.pkg.dev/ensign-421602/ensign-public/weather:extra"
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
         env:
         - name: "PORT"
           value: "5555"
